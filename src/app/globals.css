@@ -1,0 +1,400 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   ENVOLVA AI — DIREÇÃO DE ARTE "ÓRBITA"
+   ----------------------------------------------------------------------------
+   Ideia: "envolver" é literal. Um anel fino envolve o slogan como uma órbita e
+   o ponto âmbar da logo é o único elemento "vivo" da página — ele marca títulos,
+   percorre os passos e sinaliza o que importa. Todo o resto é tipografia e ar.
+
+   Tipografia (2 famílias + mono utilitária):
+   - Geist (grotesca firme)  → headlines, corpo, UI. Display com tracking negativo.
+   - Instrument Serif itálico → ênfase editorial dentro das headlines (*assim*).
+   - Geist Mono              → rótulos, índices de seção, metadados. Sempre caixa alta.
+
+   Cor: paleta da marca, sem exceção. Dourado (#C89B3C) SOMENTE em detalhes:
+   pontos, fios, sublinhados, selo. Nunca em blocos ou texto longo sobre claro
+   (contraste insuficiente). As cores da logo (#071312 / #EEB21A / #F3F2EE)
+   vivem só dentro da logo.
+
+   Ritmo: claro → claro → ESCURO → claro → claro → ESCURO → claro → claro → ESCURO.
+   Movimento: easing expo-out, 400–1100 ms, só transform/opacity.
+   prefers-reduced-motion desliga tudo (ver final do arquivo).
+   ========================================================================== */
+
+@theme {
+  --color-paper: #f5f6f0;
+  --color-ink: #16201b;
+  --color-primary: #1f4a3a;
+  --color-support: #2c6449;
+  --color-deep: #0e1d18;
+  --color-gold: #c89b3c;
+  --color-muted: #4b564f;
+  --color-card: #ffffff;
+  --color-surface: #e7e9de;
+  --color-surface-soft: #ecefe3;
+  --color-line: #dadbc9;
+  /* vermelho "destructive" do shadcn (claro / escuro) */
+  --color-error: oklch(0.577 0.245 27.325);
+  --color-error-soft: oklch(0.704 0.191 22.216);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-instrument-serif), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+  --breakpoint-xs: 26rem;
+}
+
+:root {
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(6rem, 14vw, 12rem);
+  --header-h: 4.25rem;
+}
+
+/* ---------- base (em @layer base para que utilities possam sobrescrever) ---------- */
+
+@layer base {
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-support);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+[data-theme="dark"] :focus-visible,
+.on-dark :focus-visible {
+  outline-color: var(--color-gold);
+}
+}
+
+/* Grão sutil sobre a página inteira: tira o "digital liso" do off-white. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- utilitários de composição ---------- */
+
+@utility container-x {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility section-y {
+  padding-block: var(--section-y);
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@utility display {
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+@utility hairline {
+  border-color: color-mix(in oklab, currentColor 14%, transparent);
+}
+
+/* ---------- reveal on scroll (ativado por RevealObserver) ---------- */
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 1.1s var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+html.js [data-reveal="fade"] {
+  transform: none;
+}
+html.js [data-reveal="scale"] {
+  transform: scale(0.965);
+}
+html.js [data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Palavras mascaradas subindo, em cascata */
+html.js [data-reveal="split"] {
+  opacity: 1;
+  transform: none;
+}
+.split-word {
+  display: inline-block;
+  overflow: clip;
+  overflow-clip-margin: 0.12em;
+  vertical-align: top;
+  padding-inline-end: 0.04em;
+}
+.split-word > span {
+  display: inline-block;
+}
+html.js [data-reveal="split"] .split-word > span {
+  transform: translate3d(0, 108%, 0);
+  transition: transform 1.05s var(--ease-out-expo);
+  transition-delay: calc(var(--i, 0) * 55ms + var(--d, 0) * 90ms);
+}
+html.js [data-reveal="split"][data-in] .split-word > span {
+  transform: none;
+}
+
+/* Lista riscada da seção "Diferenciais" */
+.strike-item {
+  position: relative;
+  display: inline-block;
+  transition: color 0.6s var(--ease-out-expo);
+  transition-delay: calc(0.35s + var(--i) * 0.28s);
+}
+.strike-item::after {
+  content: "";
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  top: 54%;
+  height: 0.075em;
+  min-height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease-in-out-quint);
+  transition-delay: calc(0.35s + var(--i) * 0.28s);
+}
+[data-in] .strike-item {
+  color: color-mix(in oklab, var(--color-ink) 32%, var(--color-paper));
+}
+[data-in] .strike-item::after {
+  transform: scaleX(1);
+}
+html:not(.js) .strike-item::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Órbita (hero) ---------- */
+
+.orbit-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: orbit-draw 2.4s var(--ease-in-out-quint) 0.55s forwards;
+}
+@keyframes orbit-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.orbit-dot {
+  opacity: 0;
+  animation: fade-in 0.8s var(--ease-out-expo) 2.4s forwards;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Órbita (serviços) ---------- */
+
+@property --orbit-rot {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+.orbit-system {
+  transition: --orbit-rot 1.2s var(--ease-out-expo);
+}
+.orbit-spin {
+  animation: spin 60s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulso discreto do ponto */
+/* o elemento com .dot-pulse precisa de position (relative/absolute) */
+.dot-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 2.8s var(--ease-out-expo) infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* ---------- Scroll-scrub (texto que acende ao rolar) ---------- */
+
+.scrub-word {
+  opacity: clamp(0.14, calc((var(--p, 1) * var(--n) - var(--i)) * 1), 1);
+  transition: opacity 0.18s linear;
+}
+
+/* ---------- Palavra rotativa (Sob medida) ---------- */
+
+.rotator-item {
+  transition:
+    transform 0.9s var(--ease-out-expo),
+    opacity 0.6s var(--ease-out-expo);
+}
+
+/* ---------- Formulário ---------- */
+
+.field-input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 22%, transparent);
+  border-radius: 0;
+  padding: 0.7rem 0 0.8rem;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: var(--color-paper);
+  transition:
+    border-color 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo);
+}
+.field-input::placeholder {
+  color: color-mix(in oklab, var(--color-paper) 38%, transparent);
+}
+.field-input:hover {
+  border-bottom-color: color-mix(in oklab, var(--color-paper) 45%, transparent);
+}
+.field-input:focus {
+  outline: none;
+  border-bottom-color: var(--color-gold);
+  box-shadow: 0 1px 0 0 var(--color-gold);
+}
+.field-input[aria-invalid="true"] {
+  border-bottom-color: var(--color-error-soft);
+  box-shadow: 0 1px 0 0 var(--color-error-soft);
+}
+select.field-input {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%23F5F6F0' stroke-opacity='.6' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.25rem center;
+  padding-right: 2rem;
+}
+select.field-input option {
+  background: var(--color-deep);
+  color: var(--color-paper);
+}
+textarea.field-input {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+/* ---------- Sucesso do formulário ---------- */
+
+.success-ring {
+  animation: success-ring 1.4s var(--ease-out-expo) both;
+}
+@keyframes success-ring {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- Menu mobile ---------- */
+
+.menu-sheet {
+  clip-path: circle(0% at calc(100% - 2.6rem) 2.1rem);
+  transition: clip-path 0.8s var(--ease-in-out-quint);
+}
+.menu-sheet[data-open="true"] {
+  clip-path: circle(150% at calc(100% - 2.6rem) 2.1rem);
+}
+.menu-link {
+  transform: translate3d(0, 110%, 0);
+  transition: transform 0.9s var(--ease-out-expo);
+  transition-delay: calc(0.18s + var(--i) * 60ms);
+}
+.menu-sheet[data-open="true"] .menu-link {
+  transform: none;
+}
+
+/* ---------- Movimento reduzido: desliga tudo ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+  html.js [data-reveal],
+  html.js [data-reveal="split"] .split-word > span {
+    opacity: 1;
+    transform: none;
+  }
+  .scrub-word {
+    opacity: 1;
+  }
+  .dot-pulse::after,
+  .orbit-spin {
+    animation: none;
+  }
+}
