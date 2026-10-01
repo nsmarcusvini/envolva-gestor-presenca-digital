@@ -92,8 +92,8 @@ export function Hero() {
             className="flex flex-col gap-3 xs:flex-row xs:flex-wrap"
           >
             <Button href={site.cta.primary.href}>{site.cta.primary.label}</Button>
-            <Button href={site.cta.plans.href} variant="outline">
-              {site.cta.plans.label}
+            <Button href={site.cta.secondary.href} variant="outline">
+              {site.cta.secondary.label}
             </Button>
           </div>
           <a

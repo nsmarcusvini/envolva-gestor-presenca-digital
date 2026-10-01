@@ -2,8 +2,8 @@ import { why } from "@/content/home";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 /**
- * Diferenciais. Momento: cinco fornecedores são riscados, um a um, e sobra
- * só a Envolva AI. Depois, os diferenciais concretos em grade editorial (sem cards).
+ * Diferenciais. Momento: o que a empresa deixa para trás é riscado, um a um,
+ * e sobra só o software dela. Depois, os diferenciais concretos em grade editorial (sem cards).
  */
 export function Why() {
   return (
@@ -14,7 +14,7 @@ export function Why() {
         <div className="mt-[clamp(4rem,9vw,7rem)] grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div data-reveal="fade" className="lg:col-span-5">
             <ul
-              aria-label="Fornecedores que a Envolva AI substitui"
+              aria-label={why.replacedLabel}
               className="space-y-2 text-[clamp(1.6rem,3vw,2.6rem)] font-medium leading-[1.15] tracking-[-0.04em]"
             >
               {why.replaced.map((r, i) => (

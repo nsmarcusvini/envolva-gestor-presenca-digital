@@ -1,66 +1,72 @@
-import type { PlanId } from "./plans";
+import type { PaymentPref } from "./payment";
 
-/** Textos e opções do formulário de diagnóstico. */
+/** Textos e opções do formulário de avaliação. */
 export const leadForm = {
   index: "09",
-  eyebrow: "Diagnóstico",
+  eyebrow: "Avaliação",
   title: "Vamos envolver *seu negócio*?",
-  sub: "Conte um pouco sobre sua empresa. A Envolva AI entende o cenário e mostra como sua presença digital pode evoluir.",
+  sub: "Conte como sua empresa funciona hoje. A Envolva AI avalia, monta um orçamento sob medida e apresenta as formas de pagamento — inclusive parcelado até o software ser seu.",
   duration: "Leva menos de 2 minutos.",
   whatsappAlt: "Prefere conversar agora?",
   whatsappAltCta: "Chamar no WhatsApp",
 
   groups: {
     you: "Sobre você",
-    business: "Sobre o negócio",
-    needs: "O que precisa de atenção",
+    business: "Sobre a empresa",
+    needs: "O que precisa resolver",
   },
 
   fields: {
     nome: { label: "Seu nome", placeholder: "Como podemos te chamar?", error: "Conta pra gente o seu nome." },
-    empresa: { label: "Empresa", placeholder: "Nome do negócio", error: "Qual é o nome da empresa?" },
+    empresa: { label: "Empresa", placeholder: "Nome da empresa", error: "Qual é o nome da empresa?" },
     whatsapp: { label: "WhatsApp", placeholder: "(11) 90000-0000", error: "Confere o WhatsApp — com DDD." },
-    presenca: { label: "Instagram ou site", placeholder: "@seunegocio ou seusite.com.br", hint: "Opcional" },
+    presenca: { label: "Site ou Instagram", placeholder: "seusite.com.br ou @suaempresa", hint: "Opcional" },
     segmento: { label: "Segmento", placeholder: "Selecione" },
-    plano: { label: "Plano de interesse" },
-    desafios: { label: "O que mais precisa de atenção hoje?", hint: "Pode marcar mais de um" },
+    pagamento: { label: "Como prefere pagar?", hint: "Você decide depois de ver o orçamento" },
+    desafios: { label: "O que você quer resolver?", hint: "Pode marcar mais de um" },
     dor: {
-      label: "Existe alguma dor específica no seu negócio que você gostaria de resolver?",
-      placeholder: "Ex.: perco tempo respondendo as mesmas perguntas no WhatsApp…",
-      hint: "Opcional — mas é aqui que nasce o Sob medida.",
+      label: "Como esse processo funciona hoje?",
+      placeholder: "Ex.: os pedidos chegam pelo WhatsApp, vão para uma planilha e sempre algo se perde…",
+      hint: "Opcional — mas quanto mais detalhe, mais preciso o orçamento.",
     },
   },
 
   segments: [
-    "Alimentação",
-    "Beleza e estética",
-    "Saúde e bem-estar",
     "Comércio e varejo",
     "Serviços",
+    "Indústria",
+    "Alimentação",
+    "Saúde e bem-estar",
     "Educação",
+    "Logística e transporte",
     "Outro",
   ],
 
-  planOptions: [
-    { value: "presente", label: "Presente" },
-    { value: "conectado", label: "Conectado" },
-    { value: "envolvido", label: "Envolvido" },
-    { value: "sob-medida", label: "Sob medida" },
-    { value: "indefinido", label: "Ainda não sei" },
-  ] as { value: PlanId | "indefinido"; label: string }[],
+  paymentOptions: [
+    { value: "parcelado", label: "Parcelado até ser meu" },
+    { value: "a-vista", label: "À vista" },
+    { value: "indefinido", label: "Quero entender as opções" },
+  ] as { value: PaymentPref; label: string }[],
 
-  challenges: ["Google", "Site", "Instagram", "Conteúdo", "Automação", "Tudo isso"],
+  challenges: [
+    "Gestão e controles",
+    "Automação de tarefas",
+    "Integração entre sistemas",
+    "App ou portal",
+    "Relatórios e painéis",
+    "Ainda não sei",
+  ],
 
   consent: "Ao enviar, você concorda com a",
   consentLink: { label: "Política de privacidade", href: "/privacidade" },
-  submit: "Enviar e solicitar diagnóstico",
+  submit: "Enviar e solicitar avaliação",
   submitting: "Enviando…",
   genericError: "Não conseguimos enviar agora. Tente de novo ou chame no WhatsApp.",
 
   success: {
     title: (firstName: string) => `Recebido, ${firstName}.`,
     body: (company: string) =>
-      `A Envolva AI vai analisar o cenário ${company ? `de ${company}` : "do seu negócio"} e falar com você pelo WhatsApp.`,
+      `A Envolva AI vai avaliar o cenário ${company ? `de ${company}` : "da sua empresa"} e falar com você pelo WhatsApp para montar o orçamento.`,
     again: "Enviar outra resposta",
   },
 };

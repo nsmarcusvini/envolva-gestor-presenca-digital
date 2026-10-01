@@ -1,5 +1,5 @@
 /**
- * Ponto ÚNICO de envio do formulário de diagnóstico.
+ * Ponto ÚNICO de envio do formulário de avaliação.
  *
  * Hoje: modo "preview" (só interface — mostra o sucesso sem enviar para lugar nenhum).
  * Quando a ferramenta for escolhida, troque `leadDestination` por uma das opções:
@@ -22,7 +22,7 @@ export type Lead = {
   whatsapp: string;
   presenca: string;
   segmento: string;
-  plano: string;
+  pagamento: string;
   desafios: string[];
   dor: string;
 };

@@ -4,13 +4,13 @@
  */
 
 const whatsappNumber = "5511943676301";
-const whatsappMessage = "Olá! Quero conhecer a Envolva AI.";
+const whatsappMessage = "Olá! Quero uma avaliação de software sob medida.";
 
 export const site = {
   name: "Envolva AI",
   slogan: "Envolva o Seu Negócio.",
   description:
-    "A Envolva AI cuida da presença digital de pequenos negócios — Google, site, Instagram, conteúdo e automações — para que você possa cuidar do seu.",
+    "A Envolva AI cria software sob medida para pequenas e médias empresas — com a opção de pagar em parcelas até o software ser 100% seu.",
   // PENDENTE: domínio oficial. Defina NEXT_PUBLIC_SITE_URL no ambiente (ex.: na Vercel).
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
@@ -29,15 +29,15 @@ export const site = {
   },
 
   nav: [
-    { label: "Serviços", href: "#servicos" },
+    { label: "Soluções", href: "#servicos" },
+    { label: "Pagamento", href: "#pagamento" },
     { label: "Como funciona", href: "#como-funciona" },
-    { label: "Planos", href: "#planos" },
     { label: "Sob medida", href: "#sob-medida" },
   ],
 
   cta: {
-    primary: { label: "Solicitar diagnóstico", href: "#contato" },
-    plans: { label: "Ver planos", href: "#planos" },
+    primary: { label: "Solicitar avaliação", href: "#contato" },
+    secondary: { label: "Como funciona o pagamento", href: "#pagamento" },
   },
 
   legal: [

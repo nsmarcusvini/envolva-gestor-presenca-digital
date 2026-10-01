@@ -4,11 +4,11 @@
  */
 
 export const hero = {
-  eyebrow: "Parceira digital de pequenos negócios",
-  meta: ["Google", "Site", "Instagram", "Automação"],
+  eyebrow: "Software sob medida para pequenas e médias empresas",
+  meta: ["Sistemas", "Automação", "Integrações", "Parcelado até ser seu"],
   // O slogan é composto em três linhas no hero. Não altere sem rever a composição.
   headline: { line1: "Envolva", line2: "o Seu", line3: "Negócio" },
-  sub: "Google, site, Instagram e automações cuidados por uma só parceira. Você cuida do negócio. A Envolva cuida de como ele aparece.",
+  sub: "Sistemas, automações e integrações feitos para o jeito que a sua empresa trabalha. Você parcela o projeto e, na última parcela, o software é 100% seu.",
   scrollHint: "Role para ver",
 };
 
@@ -16,99 +16,91 @@ export const problem = {
   index: "02",
   eyebrow: "O cenário",
   scrub:
-    "O Instagram parou há três semanas. O Google ainda mostra o horário antigo. O site, quando existe, não abre direito no celular. E não é falta de vontade: o seu tempo vai todo para o negócio.",
+    "O pedido chegou pelo WhatsApp, foi para a planilha e se perdeu no caminho. O sistema pronto tem cem funções, menos a que você precisa — e cobra todo mês, para sempre. Software sob medida parecia coisa de empresa grande.",
   checklistTitle: "Soa familiar? Marque o que acontece aí.",
   items: [
-    { title: "Instagram sem constância", detail: "Posta quando sobra tempo. Ou seja: quase nunca." },
-    { title: "Google mal configurado", detail: "Horário errado, poucas fotos, avaliações sem resposta." },
-    { title: "Site inexistente ou desatualizado", detail: "Ou não existe, ou ninguém lembra a senha." },
-    { title: "Conteúdo difícil de produzir", detail: "Você sabe o que vende. Só não sabe o que postar." },
-    { title: "Ferramentas desconectadas", detail: "WhatsApp, planilha, agenda e caderno, cada um de um jeito." },
-    { title: "Falta de tempo", detail: "O dia acaba antes da lista de pendências." },
-    { title: "Nenhuma estratégia clara", detail: "Um pouco de tudo, sem saber o que funciona." },
+    { title: "Planilha que virou sistema", detail: "Funciona até alguém apagar uma fórmula." },
+    { title: "Sistema pronto que não serve", detail: "Você paga por cem funções, usa cinco e falta a que importa." },
+    { title: "Mensalidade que nunca acaba", detail: "Anos pagando e o software continua sendo do fornecedor." },
+    { title: "Retrabalho manual", detail: "A mesma informação digitada em três lugares diferentes." },
+    { title: "Ferramentas desconectadas", detail: "WhatsApp, planilha, ERP e caderno, cada um de um jeito." },
+    { title: "Dados que não viram decisão", detail: "Os números existem, mas ninguém consegue enxergar." },
+    { title: "Projeto fora do orçamento", detail: "Software sob medida sempre pareceu caro demais." },
   ],
   counterLabel: "marcados",
-  counterNote: "A Envolva AI cuida de todos eles.",
+  counterNote: "Software sob medida resolve na raiz — e o pagamento cabe no caixa.",
   cta: { label: "Ver como", href: "#servicos" },
 };
 
 export const solution = {
   index: "03",
   eyebrow: "A solução",
-  title: "Tudo o que seu negócio precisa para estar *presente*, *conectado* e pronto para crescer.",
+  title: "Software que se encaixa *na sua empresa* — e não o contrário.",
   intro:
-    "A Envolva AI reúne o que hoje está espalhado entre fornecedores, aplicativos e boas intenções — e faz tudo funcionar junto.",
-  orbitCenter: "Seu negócio",
-  orbitRing: "Presença digital · tudo conectado · ",
+    "Sistemas, automações e integrações desenhados para o seu processo. Nada de adaptar a operação a um programa genérico.",
+  orbitCenter: "Sua empresa",
+  orbitRing: "Software sob medida · feito para você · ",
 };
 
 export const how = {
-  index: "04",
-  eyebrow: "Como funciona",
-  title: "Quatro passos. O trabalho pesado *fica com a gente*.",
-};
-
-export const plansSection = {
   index: "05",
-  eyebrow: "Planos",
-  title: "Escolha o quanto você quer *que a gente cuide*.",
-  intro:
-    "Mensalidade fixa, com tudo descrito. A implantação é orçada sob consulta, conforme o ponto de partida do seu negócio.",
-  footnote: "Valores mensais. Implantação sob consulta em todos os planos.",
+  eyebrow: "Como funciona",
+  title: "Da primeira conversa ao software *que é seu*.",
 };
 
 export const pain = {
   index: "06",
   eyebrow: "Sob medida",
-  title: "Tem alguma coisa no seu negócio que *trava todo dia*?",
+  title: "Qual processo da sua empresa *ainda vive na planilha*?",
   examplesLabel: "Por exemplo",
   examples: [
-    "Responder as mesmas perguntas no WhatsApp.",
-    "Montar orçamento na mão, um por um.",
-    "Agenda no caderno — e cliente esquecido.",
-    "Planilha que ninguém atualiza.",
-    "Cliente que some depois do primeiro contato.",
+    "Estoque controlado em planilha.",
+    "Orçamento montado na mão, um por um.",
+    "Pedido anotado no WhatsApp — e esquecido.",
+    "Ordem de serviço em papel.",
+    "Relatório que leva um dia para sair.",
   ],
-  body: "O plano *Sob medida* existe para isso. Você conta a dor; a Envolva AI desenha a solução — uma automação, uma integração ou um processo digital que resolve o problema na raiz.",
+  body: "É isso que a Envolva AI transforma em *software*. Você conta como funciona hoje; a gente avalia, desenha a solução e monta um orçamento sob medida — com a opção de parcelar até ele ser seu.",
   steps: [
-    "Você descreve a dor no formulário.",
-    "A gente analisa e propõe a solução.",
-    "Você aprova. A gente implementa.",
+    "Você descreve o processo no formulário.",
+    "A gente avalia e monta o orçamento.",
+    "Você aprova, escolhe como pagar e a gente constrói.",
   ],
-  price: "Sob consulta",
-  cta: "Contar minha dor",
+  price: "Orçamento após avaliação",
+  cta: "Descrever meu processo",
 };
 
 export const why = {
   index: "07",
   eyebrow: "Diferenciais",
-  title: "Uma parceira *no lugar de cinco* fornecedores.",
-  replaced: ["O designer", "O social media", "Quem faz o site", "Quem mexe no Google", "O freelancer da automação"],
-  replacedBy: "Envolva AI",
+  title: "Software de empresa grande, *no tamanho* da sua.",
+  replacedLabel: "O que fica para trás",
+  replaced: ["A planilha gigante", "O sistema que não serve", "A mensalidade eterna", "O retrabalho manual", "Os apps desconectados"],
+  replacedBy: "Seu software",
   items: [
     {
-      title: "Um contato para tudo",
-      body: "Google, site, Instagram e automações com a mesma equipe. Sem repassar o briefing cinco vezes.",
+      title: "Feito para o seu processo",
+      body: "O software se adapta à sua operação. Não é a sua equipe que se adapta a ele.",
     },
     {
-      title: "Feito para pequenos negócios",
-      body: "Planos pensados para quem não tem equipe de marketing — nem tempo para montar uma.",
+      title: "Pagamento que cabe no caixa",
+      body: "Parcele o projeto. O investimento acompanha o retorno que o software traz.",
     },
     {
-      title: "Estratégia com tecnologia",
-      body: "Não é só postar. Cada ação conversa com a outra e com o que o negócio precisa vender.",
+      title: "No fim, é seu",
+      body: "Quitadas as parcelas, o software é da sua empresa. Sem aluguel para sempre.",
     },
     {
-      title: "Automação sob medida",
-      body: "Quando uma tarefa repetida come o seu dia, a gente cria uma ferramenta para ela.",
+      title: "Para pequenas e médias",
+      body: "Projeto no tamanho certo, linguagem simples e nada de burocracia de consultoria.",
     },
     {
-      title: "Menos complexidade",
-      body: "Você aprova, a gente executa. Sem painel complicado, sem jargão.",
+      title: "Entregas em etapas",
+      body: "Você vê funcionando cedo, testa com a equipe e ajusta no caminho.",
     },
     {
-      title: "Acompanhamento contínuo",
-      body: "Todo mês, a análise do que funcionou e o ajuste do que não funcionou.",
+      title: "Orçamento sob medida",
+      body: "Sem tabela de preço. Cada projeto é avaliado e orçado a partir da sua realidade.",
     },
   ],
 };
@@ -116,11 +108,11 @@ export const why = {
 export const proofSection = {
   index: "08",
   eyebrow: "Resultados",
-  title: "O que muda quando o negócio é *envolvido*.",
+  title: "O que muda quando o processo *vira software*.",
   intro: "Resultados reais, contados por quem vive o dia a dia do próprio negócio.",
 };
 
 export const footer = {
   blurb:
-    "Parceira digital de pequenos negócios. Google, site, Instagram, conteúdo e automações — cuidados por uma só equipe.",
+    "Software sob medida para pequenas e médias empresas — com a opção de pagar em parcelas até ele ser 100% seu.",
 };

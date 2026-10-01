@@ -5,7 +5,7 @@ import { Button } from "./Button";
 import { requestLead, type LeadIntent } from "@/lib/intent";
 
 /**
- * CTA que leva ao formulário já pré-preenchido (plano, foco no campo de dor).
+ * CTA que leva ao formulário já pré-preenchido (pagamento, foco no campo de dor).
  * Sem JS continua funcionando como âncora para #contato.
  */
 export function LeadButton({

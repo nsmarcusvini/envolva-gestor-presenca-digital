@@ -9,7 +9,7 @@ import { LogoMark } from "@/components/ui/Logo";
 import { useMediaQuery, useReducedMotion } from "@/components/motion/hooks";
 
 /**
- * A solução: o "seu negócio" no centro e os serviços em órbita ao redor.
+ * A solução: a "sua empresa" no centro e as soluções em órbita ao redor.
  * Desktop: a órbita fica fixa (sticky) e gira para trazer ao topo o serviço
  * que está sendo lido na lista ao lado. Mobile: a órbita gira sozinha.
  */
@@ -68,7 +68,7 @@ export function Solution() {
                 <div className="absolute inset-0 rounded-full border border-paper/15" />
                 <div className="absolute inset-[18%] rounded-full border border-dashed border-paper/10" />
 
-                {/* texto circular: "presença digital" é o que conecta tudo */}
+                {/* texto circular */}
                 <svg viewBox="0 0 200 200" className="orbit-spin absolute inset-[9%] size-[82%]">
                   <defs>
                     <path id="orbit-text" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0" />

@@ -9,7 +9,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { LeadButton } from "@/components/ui/LeadButton";
 
 /**
- * Sob medida: a dor específica. Exemplos de dores reais giram em tipografia
+ * Sob medida: o processo que trava. Exemplos reais giram em tipografia
  * grande — o visitante reconhece a própria e vai direto ao campo de dor do formulário.
  */
 export function SpecificPain() {
@@ -65,7 +65,7 @@ export function SpecificPain() {
             </div>
           </div>
 
-          {/* Como funciona o Sob medida */}
+          {/* Do processo ao orçamento */}
           <div className="lg:col-span-5">
             <p data-reveal className="text-lg leading-relaxed text-paper/80 md:text-xl">
               <Emphasis text={pain.body} />
@@ -84,7 +84,7 @@ export function SpecificPain() {
               ))}
             </ol>
             <div data-reveal style={{ "--d": 4 } as React.CSSProperties} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
-              <LeadButton intent={{ plan: "sob-medida", focus: "dor" }} variant="light">
+              <LeadButton intent={{ focus: "dor" }} variant="light">
                 {pain.cta}
               </LeadButton>
               <span className="eyebrow text-paper/60">{pain.price}</span>

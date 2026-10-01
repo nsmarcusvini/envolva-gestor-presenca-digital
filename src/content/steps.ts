@@ -1,8 +1,8 @@
 export type Step = { number: string; title: string; body: string };
 
 export const steps: Step[] = [
-  { number: "01", title: "Entendemos", body: "Conversamos sobre o seu negócio, seus clientes e o que está travando hoje." },
-  { number: "02", title: "Estruturamos", body: "Definimos o que a sua presença digital precisa — nem mais, nem menos." },
-  { number: "03", title: "Envolvemos", body: "Colocamos Google, site, Instagram e ferramentas para funcionar juntos." },
-  { number: "04", title: "Evoluímos", body: "Acompanhamos os números todo mês e ajustamos o que for preciso." },
+  { number: "01", title: "Avaliamos", body: "Entendemos como sua empresa funciona hoje e onde o processo trava." },
+  { number: "02", title: "Orçamos", body: "Escopo, prazo e valor — com a opção de pagar à vista ou parcelado." },
+  { number: "03", title: "Construímos", body: "Entregas em etapas. Você vê funcionando cedo e ajusta no caminho." },
+  { number: "04", title: "É seu", body: "Software rodando na operação. Quitadas as parcelas, ele é 100% da sua empresa." },
 ];

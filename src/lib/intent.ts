@@ -1,10 +1,10 @@
-import type { PlanId } from "@/content/plans";
+import type { PaymentPref } from "@/content/payment";
 
 /**
  * Qualquer CTA da página pode "pré-preencher" o formulário:
- * requestLead({ plan: "conectado" }) → rola até #contato e marca o plano.
+ * requestLead({ payment: "parcelado" }) → rola até #contato e marca a forma de pagamento.
  */
-export type LeadIntent = { plan?: PlanId; focus?: "dor" };
+export type LeadIntent = { payment?: PaymentPref; focus?: "dor" };
 
 export const LEAD_INTENT_EVENT = "envolva:lead-intent";
 

@@ -18,7 +18,7 @@ const emptyLead: Lead = {
   whatsapp: "",
   presenca: "",
   segmento: "",
-  plano: "",
+  pagamento: "",
   desafios: [],
   dor: "",
 };
@@ -56,17 +56,17 @@ export function ContactForm() {
     if (key in errors) setErrors((e) => ({ ...e, [key]: undefined }));
   };
 
-  // CTAs da página pré-preenchem o formulário (plano, foco no campo de dor).
+  // CTAs da página pré-preenchem o formulário (pagamento, foco no campo de dor).
   useEffect(() => {
     const apply = (intent: LeadIntent) => {
-      if (intent.plan) setLead((l) => ({ ...l, plano: intent.plan! }));
+      if (intent.payment) setLead((l) => ({ ...l, pagamento: intent.payment! }));
       if (intent.focus === "dor") setTimeout(() => dorRef.current?.focus({ preventScroll: true }), 900);
     };
     const onIntent = (e: Event) => apply((e as CustomEvent<LeadIntent>).detail);
     window.addEventListener(LEAD_INTENT_EVENT, onIntent);
 
-    const plano = new URLSearchParams(window.location.search).get("plano");
-    if (plano && leadForm.planOptions.some((o) => o.value === plano)) setLead((l) => ({ ...l, plano }));
+    const pagamento = new URLSearchParams(window.location.search).get("pagamento");
+    if (pagamento && leadForm.paymentOptions.some((o) => o.value === pagamento)) setLead((l) => ({ ...l, pagamento }));
 
     return () => window.removeEventListener(LEAD_INTENT_EVENT, onIntent);
   }, []);
@@ -200,12 +200,13 @@ export function ContactForm() {
               <Group n="03" title={leadForm.groups.needs}>
                 <div className="space-y-10">
                   <ChipGroup
-                    name="plano"
-                    legend={f.plano.label}
+                    name="pagamento"
+                    legend={f.pagamento.label}
+                    hint={f.pagamento.hint}
                     type="radio"
-                    options={leadForm.planOptions}
-                    value={lead.plano ? [lead.plano] : []}
-                    onChange={(v) => set("plano", v[0] ?? "")}
+                    options={leadForm.paymentOptions}
+                    value={lead.pagamento ? [lead.pagamento] : []}
+                    onChange={(v) => set("pagamento", v[0] ?? "")}
                   />
                   <ChipGroup
                     name="desafios"
